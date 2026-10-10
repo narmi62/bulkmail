@@ -41,7 +41,7 @@ function App() {
   function sendmsg() {
     setStatus(true);
 
-    axios.post("http://localhost:5000/sendemail", { sub:sub,msg:msg,emailList:emailList })
+    axios.post("https://bulkmail-oosh.onrender.com", { sub:sub,msg:msg,emailList:emailList })
       .then((response) => {
         console.log("Response:", response.data);
         console.log("Type:", typeof response.data);
