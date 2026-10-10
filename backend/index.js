@@ -7,12 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://narmathaperiyasamyp_db_user:db123@cluster0.lyvmmid.mongodb.net/passkey?appName=Cluster0")
+
+mongoose.connect(process.env.MONGO_URI)
     .then(function () {
-        console.log("Connected to DB")
-    }).catch(function () {
-        console.log("Failed to connect")
+        console.log("Connected to DB");
     })
+    .catch(function (error) {
+        console.log("Failed to connect:", error.message);
+    });
+
 const credentialSchema = new mongoose.Schema({
     user: String,
     pass: String
